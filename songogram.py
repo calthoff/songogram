@@ -58,7 +58,6 @@ def make_call(number_to_call, text, your_name):
     ncco = [
       {
         'action': 'talk',
-        'voiceName': 'Joey',
         'text': 'This is a songogram from {} {}'.format(your_name, text)
       }
     ]
