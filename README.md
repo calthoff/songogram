@@ -1,6 +1,6 @@
-<h1> Sonogram Documentation </h1>
-This is the documentation for Sonogram: an open-source webapp for sending 
-sonograms to your friends. A sonogram is a robocall that
+<h1> Songogram Documentation </h1>
+This is the documentation for Songogram: an open-source webapp for sending 
+songograms to your friends. A songogram is a robocall that
 reads your friend the lyrics of a song on the phone with a follow-up text. 
 
 
@@ -9,7 +9,7 @@ You can clone the repository via the command line: <br>
 <code>git clone https://github.com/calthoff/sonogram.git </code>
 
 <h3>Dependencies </h3>
-To use Sonogram, first install its dependencies using pip freeze:<br>
+To use Songogram, first install its dependencies using pip freeze:<br>
 <code>pip install requirements.txt </code>
 
 <h3>Environmental Variables </h3>
