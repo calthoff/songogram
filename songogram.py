@@ -1,15 +1,18 @@
-import os
 from urllib.request import Request, urlopen
-from vonage import Client, Voice
+from vonage import Client, Voice, Sms
 from bs4 import BeautifulSoup
-import vonage
+import os
 
 # In Production, these should come from environmental variables
-APPLICATION_ID = 'Your  Vonage application ID.'
-PRIVATE_KEY = 'Filepath to your Vonage private key.'
 VONAGE_API_KEY = "Your Vonage API key."
 VONAGE_API_SECRET = "Your Vonage API secret. "
-VONAGE_BRAND_NAME = "Your Vonage Brand Name"
+VONAGE_NUMBER = 'Your Vonage number'
+
+APPLICATION_ID = 'Your  Vonage application ID.'
+PRIVATE_KEY = os.join('Filepath to your Vonage private key.')
+
+SCRAPE_SITE = 'http://www.songlyrics.com/{}-{}/{}-lyrics/'
+
 
 
 def send_songogram(your_name, artist_first_name, artist_last_name, song_name, number_to_call):
@@ -33,7 +36,7 @@ def scrape_lyrics(first_name, last_name, song_name,):
     :return: string containing the song's lyrics.
     """
     req = Request(
-        'http://www.songlyrics.com/{}-{}/{}-lyrics/'.format(first_name, last_name, song_name.replace(" ", "-")),
+        SCRAPE_SITE.format(first_name, last_name, song_name.replace(" ", "-")),
         headers={'User-Agent': 'Mozilla/5.0'})
     html = urlopen(req).read()
     parser = "html.parser"
@@ -62,7 +65,7 @@ def make_call(number_to_call, text, your_name):
     voice = Voice(client)
     response = voice.create_call({
       'to': [{'type': 'phone', 'number': '{}'.format(number_to_call)}],
-      'from': {'type': 'phone', 'number': '14704288425'},
+      'from': {'type': 'phone', 'number': VONAGE_NUMBER},
       'answer_url': ['https://example.com/answer'],
       'ncco': ncco
     })
@@ -77,10 +80,10 @@ def send_text(song_name, artist, number_to_text, your_name):
     :param your_name: string containing the person sending the sonogram's name.
     """
     client = Client(key=VONAGE_API_KEY, secret=VONAGE_API_SECRET)
-    sms = vonage.Sms(client)
+    sms = Sms(client)
     response_data = sms.send_message(
         {
-            "from": VONAGE_BRAND_NAME,
+            "from": VONAGE_NUMBER,
             "to": number_to_text,
             "text": "Hello! You are receiving a songogram of the song {} by {} from your friend {}".format(song_name, artist, your_name),
         }
@@ -90,5 +93,9 @@ def send_text(song_name, artist, number_to_text, your_name):
         print("Message sent successfully.")
     else:
         print(f"Message failed with error: {response_data['messages'][0]['error-text']}")
+
+
+
+
 
 
