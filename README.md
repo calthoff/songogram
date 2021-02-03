@@ -15,13 +15,13 @@ To use Sonogram, first install its dependencies using pip freeze:<br>
 <h3>Environmental Variables </h3>
 In web_app.py you need to set the following variables with your information from your Vonage account. You can
 get this information by registering for an account on https://developer.nexmo.com/<br><br>
-<code>
+
 APPLICATION_ID = 'Your Vonage application ID.' <br>
 PRIVATE_KEY = 'Filepath to your Vonage private key.' <br>
 VONAGE_API_KEY = "Your Vonage API key." <br>
 VONAGE_API_SECRET = "Your Vonage API secret." <br>
 VONAGE_BRAND_NAME = "Your Vonage Brand Name" <br>
-</code>
+
 <br> In production, you should set and get them from environmental variables. 
 
 <h3> Usage </h3>
