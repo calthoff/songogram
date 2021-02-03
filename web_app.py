@@ -14,9 +14,11 @@ def songogram():
     for item in request.args.values():
         if item == "":
             return jsonify({'status': 422,'error': 'Unprocessable Entity', 'message': 'Missing Input'})
-    send_songogram(request.args.get('name'), request.args.get('artist_fname'), request.args.get('artist_lname'),
+    result = send_songogram(request.args.get('name'), request.args.get('artist_fname'), request.args.get('artist_lname'),
                    request.args.get('song_name'), request.args.get('number'))
-    return send_from_directory('', 'success.html')
+    if result['status'] == 201:
+        return send_from_directory('', 'success.html')
+    return result
 
 
 if __name__ == "__main__":

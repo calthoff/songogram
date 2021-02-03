@@ -9,10 +9,9 @@ VONAGE_API_SECRET = "Your Vonage API secret. "
 VONAGE_NUMBER = 'Your Vonage number'
 
 APPLICATION_ID = 'Your  Vonage application ID.'
-PRIVATE_KEY = os.join('Filepath to your Vonage private key.')
+PRIVATE_KEY = os.path.join('Filepath to your Vonage private key.')
 
 SCRAPE_SITE = 'http://www.songlyrics.com/{}-{}/{}-lyrics/'
-
 
 
 def send_songogram(your_name, artist_first_name, artist_last_name, song_name, number_to_call):
@@ -23,10 +22,13 @@ def send_songogram(your_name, artist_first_name, artist_last_name, song_name, nu
     :param song_name: string containing the song name.
     :param number_to_call: string of the telephone number to send a sonogram to.
     """
-    lyrics = scrape_lyrics(artist_first_name, artist_last_name, song_name)
-    make_call(number_to_call, lyrics, your_name)
-    send_text(song_name, artist_first_name + ' ' + artist_last_name, number_to_call, your_name)
-
+    try:
+        lyrics = scrape_lyrics(artist_first_name, artist_last_name, song_name)
+        make_call(number_to_call, lyrics, your_name)
+        send_text(song_name, artist_first_name + ' ' + artist_last_name, number_to_call, your_name)
+        return {'status': 201}
+    except:
+        return {'status': 400,'error': 'Bad Request', 'message': 'Unable to process request'}
 
 def scrape_lyrics(first_name, last_name, song_name,):
     """ Function for scraping lyrics from songlyrics.com
@@ -93,9 +95,5 @@ def send_text(song_name, artist, number_to_text, your_name):
         print("Message sent successfully.")
     else:
         print(f"Message failed with error: {response_data['messages'][0]['error-text']}")
-
-
-
-
 
 
