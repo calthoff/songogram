@@ -10,7 +10,7 @@ You can clone the repository via the command line: <br>
 
 <h3>Dependencies </h3>
 To use Sonogram, first install its dependencies using pip freeze:<br>
-<code>pip freeze requirements.txt </code>
+<code>pip install requirements.txt </code>
 
 <h3>Environmental Variables </h3>
 In web_app.py you need to set the following variables with your information from your Vonage account. You can
