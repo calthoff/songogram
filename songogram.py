@@ -67,7 +67,6 @@ def make_call(number_to_call, text, your_name):
     response = voice.create_call({
       'to': [{'type': 'phone', 'number': '{}'.format(number_to_call)}],
       'from': {'type': 'phone', 'number': VONAGE_NUMBER},
-      'answer_url': ['https://example.com/answer'],
       'ncco': ncco
     })
     voice.send_speech(response['uuid'], text='Hello from songogram')
