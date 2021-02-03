@@ -9,7 +9,7 @@ VONAGE_API_SECRET = "Your Vonage API secret. "
 VONAGE_NUMBER = 'Your Vonage number'
 
 APPLICATION_ID = 'Your  Vonage application ID.'
-PRIVATE_KEY = os.join('Filepath to your Vonage private key.')
+PRIVATE_KEY = os.path.join('Filepath to your Vonage private key.')
 
 SCRAPE_SITE = 'http://www.songlyrics.com/{}-{}/{}-lyrics/'
 
