@@ -38,7 +38,7 @@ Here is how to send a songogram via API <br>
 <i>song_name</i>: The name of the song you are sending. <br>
 <i>number</i>: The number you are sending a sonogram to.<br>
 <br>
-<b>Example:</b> http://127.0.0.1:5000/API/1.0.0/songogram?name=Cory+Althoff&artist_fname=Kanye+&artist_lname=West&song_name=Stronger&number=16507763446
+<b>Example:</b> http://127.0.0.1:5000/API/1.0.0/songogram?name=Cory+Althoff&artist_fname=Kanye+&artist_lname=West&song_name=Stronger&number=14328863554
    
 <h5> Web App </h5>
 
